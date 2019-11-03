@@ -1,0 +1,38 @@
+<h1>Show Approval</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @approval.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @approval.desc %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @approval.time %>
+  </li>
+
+  <li>
+    <strong>Approved:</strong>
+    <%= @approval.approved %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @approval.user %>
+  </li>
+
+  <li>
+    <strong>Manager:</strong>
+    <%= @approval.manager %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.approval_path(@conn, :edit, @approval) %></span>
+<span><%= link "Back", to: Routes.approval_path(@conn, :index) %></span>

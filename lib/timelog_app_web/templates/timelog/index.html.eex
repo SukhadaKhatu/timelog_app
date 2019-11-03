@@ -1,0 +1,60 @@
+<h1>Listing Timelogs</h1>
+<%= link "LogOut", to: "/session", method: :delete %>
+<h1><%= @current_user.name %></h1>
+<h1><%= @current_user.id %></h1>
+<%# <h1><%= @manager %></h1> %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Approved</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= if @current_user.manager == true do %>
+<h1>hereeeeeeeeeeee</h1>
+  <%= for timelog <- @timelogs do %>
+<%= if timelog.manager_id == @current_user do %>
+    <tr>
+      <td><%= timelog.name %></td>
+      <td><%= timelog.desc %></td>
+      <td><%= timelog.user_id %></td>
+      <td><%= timelog.manager_id %></td>
+      <td><%= timelog.approved %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.timelog_path(@conn, :show, timelog) %></span>
+        <span><%= link "Edit", to: Routes.timelog_path(@conn, :edit, timelog) %></span>
+        <span><%= link "Delete", to: Routes.timelog_path(@conn, :delete, timelog), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+<% end %>
+<% else %>
+<h1>Not hereeeeeeeeeee</h1>
+  <%= for timelog <- @timelogs do %>
+<%= if timelog.user_id == @current_user do %>
+    <tr>
+      <td><%= timelog.name %></td>
+      <td><%= timelog.desc %></td>
+      <td><%= timelog.user_id %></td>
+      <td><%= timelog.manager_id %></td>
+      <td><%= timelog.approved %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.timelog_path(@conn, :show, timelog) %></span>
+        <span><%= link "Edit", to: Routes.timelog_path(@conn, :edit, timelog) %></span>
+        <span><%= link "Delete", to: Routes.timelog_path(@conn, :delete, timelog), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+<% end %>
+<% end %>
+
+  </tbody>
+</table>
+
+<span><%= link "New Timelog", to: Routes.timelog_path(@conn, :new) %></span>

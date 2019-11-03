@@ -1,0 +1,28 @@
+<h1>Show Request</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @request.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @request.desc %>
+  </li>
+
+  <li>
+    <strong>Approved:</strong>
+    <%= @request.approved %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @request.time %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.request_path(@conn, :edit, @request) %></span>
+<span><%= link "Back", to: Routes.request_path(@conn, :index) %></span>

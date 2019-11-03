@@ -1,0 +1,23 @@
+<h1>Show Timesheet</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @timesheet.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @timesheet.desc %>
+  </li>
+
+  <li>
+    <strong>Time spent:</strong>
+    <%= @timesheet.time_spent %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.timesheet_path(@conn, :edit, @timesheet) %></span>
+<span><%= link "Back", to: Routes.timesheet_path(@conn, :index) %></span>

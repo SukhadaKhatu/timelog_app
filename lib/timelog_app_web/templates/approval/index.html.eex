@@ -1,0 +1,36 @@
+<h1>Listing Approvals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Time</th>
+      <th>Approved</th>
+      <th>User</th>
+      <th>Manager</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for approval <- @approvals do %>
+    <tr>
+      <td><%= approval.name %></td>
+      <td><%= approval.desc %></td>
+      <td><%= approval.time %></td>
+      <td><%= approval.approved %></td>
+      <td><%= approval.user %></td>
+      <td><%= approval.manager %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.approval_path(@conn, :show, approval) %></span>
+        <span><%= link "Edit", to: Routes.approval_path(@conn, :edit, approval) %></span>
+        <span><%= link "Delete", to: Routes.approval_path(@conn, :delete, approval), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Approval", to: Routes.approval_path(@conn, :new) %></span>

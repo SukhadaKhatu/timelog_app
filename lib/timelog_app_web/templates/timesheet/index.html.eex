@@ -1,0 +1,30 @@
+<h1>Listing Timesheet</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Time spent</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for timesheet <- @timesheet do %>
+    <tr>
+      <td><%= timesheet.name %></td>
+      <td><%= timesheet.desc %></td>
+      <td><%= timesheet.time_spent %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.timesheet_path(@conn, :show, timesheet) %></span>
+        <span><%= link "Edit", to: Routes.timesheet_path(@conn, :edit, timesheet) %></span>
+        <span><%= link "Delete", to: Routes.timesheet_path(@conn, :delete, timesheet), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Timesheet", to: Routes.timesheet_path(@conn, :new) %></span>

@@ -1,0 +1,28 @@
+<h1>Show Timelog</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @timelog.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @timelog.desc %>
+  </li>
+
+  <li>
+    <strong>Time spent:</strong>
+    <%= @timelog.time_spent %>
+  </li>
+
+  <li>
+    <strong>Approved:</strong>
+    <%= @timelog.approved %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.timelog_path(@conn, :edit, @timelog) %></span>
+<span><%= link "Back", to: Routes.timelog_path(@conn, :index) %></span>
